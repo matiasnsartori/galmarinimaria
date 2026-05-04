@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { db } from '../lib/db/client';
 import { talleres, ediciones } from '../lib/db/schema';
 
