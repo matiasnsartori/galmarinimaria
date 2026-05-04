@@ -6,11 +6,16 @@ import { SiteContainer } from '@/components/layout/SiteContainer';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
-import { getTallerBySlug, getEdicionesAbiertas } from '@/features/talleres/queries';
+import { getTallerBySlug, getEdicionesAbiertas, getAllTalleres } from '@/features/talleres/queries';
 import { formatPrecio } from '@/features/talleres/domain';
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const talleres = await getAllTalleres();
+  return talleres.map((t) => ({ slug: t.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

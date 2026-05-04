@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { SiteContainer } from '@/components/layout/SiteContainer';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { getTallerBySlug } from '@/features/talleres/queries';
+import { getTallerBySlug, getAllTalleres } from '@/features/talleres/queries';
 import { buildWhatsappUrl } from '@/components/layout/whatsappUrl';
 
 interface Props {
@@ -10,6 +10,11 @@ interface Props {
 }
 
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '541126132412';
+
+export async function generateStaticParams() {
+  const talleres = await getAllTalleres();
+  return talleres.map((t) => ({ 'taller-slug': t.slug }));
+}
 
 export default async function InscripcionPage({ params }: Props) {
   const { 'taller-slug': slug } = await params;
