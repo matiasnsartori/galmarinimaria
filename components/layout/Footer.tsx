@@ -48,7 +48,7 @@ export function Footer() {
       </SiteContainer>
       <div className="border-t border-surface/10">
         <SiteContainer className="py-4 text-xs opacity-60">
-          © {new Date().getFullYear()} Abriendo Caminos. Todos los derechos reservados.
+          © 2026 Abriendo Caminos. Todos los derechos reservados.
         </SiteContainer>
       </div>
     </footer>
